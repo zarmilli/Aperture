@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title data-edit="meta_title">Aperture & Co. — Photography</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -29,263 +28,454 @@
     body {
       background: var(--white);
       color: var(--text-dark);
-      font-family: 'Poppins', sans-serif;
+      font-family: Helvetica, Arial, sans-serif;
     }
-
-    /* ===== NEWS BANNER ===== */
-    .news-banner {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1100;
-      background: var(--black);
-      color: var(--white);
-      text-align: center;
-      padding: 9px 48px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .news-banner a {
-      color: var(--white);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      margin-left: 8px;
-    }
-
+     
     /* ===== NAVBAR ===== */
-    nav {
-      position: fixed;
-      top: 36px; left: 0; right: 0;
-      z-index: 1000;
-      padding: 20px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: transparent;
-      transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease;
+    nav{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:1000;
+      padding:24px 48px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:linear-gradient(to bottom,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.25) 45%,transparent 100%);
     }
-    nav.scrolled {
-      background: var(--white);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-      padding: 14px 48px;
+
+    nav .logo{
+      font-size:18px;
+      font-weight:500;
+      color:#fff;
+      letter-spacing:0.02em;
+      text-decoration:none;
+      text-transform:uppercase;
+      position:relative;
+      z-index:1001;
     }
-    nav .logo {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-dark);
-      letter-spacing: 0.02em;
-      text-decoration: none;
-      position: relative;
-      z-index: 1001;
-      transition: color 0.35s;
+
+    nav .nav-links{
+      display:flex;
+      gap:32px;
     }
-    nav .nav-links { display: flex; gap: 32px; }
-    nav .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-mid);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
+
+    nav .nav-links a{
+      font-size:18px;
+      font-weight:400;
+      color:#fff;
+      text-decoration:none;
+      letter-spacing:0.02em;
+      transition:opacity 0.2s;
     }
-    nav .nav-links a:hover { color: var(--green-dark); }
-    nav.scrolled .nav-links a:hover { color: var(--green-dark); }
+
+    nav .nav-links a:hover{
+      opacity:0.65;
+    }
 
     /* Burger */
-    .burger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 36px; height: 36px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      position: relative;
-      z-index: 1001;
+    .burger{
+      display:none;
+      flex-direction:column;
+      justify-content:center;
+      gap:5px;
+      width:36px;height:36px;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:4px;
+      position:relative;
+      z-index:1001;
     }
-    .burger span {
-      display: block;
-      width: 100%; height: 2px;
-      background: var(--text-dark);
-      border-radius: 2px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      transform-origin: center;
-    }
-    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    @media (max-width: 700px) {
-      .news-banner { padding: 9px 16px; font-size: 11px; }
-      nav { padding: 16px 20px; top: 34px; }
-      nav.scrolled { padding: 12px 20px; top: 34px; }
-      .burger { display: flex; }
-      .nav-links {
-        position: fixed;
-        top: 0; left: 0; right: 0;
-        height: 100vh;
-        background: var(--beige);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 32px;
-        transform: translateY(-100%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        pointer-events: none;
+    .burger span{
+      display:block;
+      width:100%;height:2px;
+      background:#fff;
+      border-radius:2px;
+      transition:transform 0.3s ease,opacity 0.3s ease;
+      transform-origin:center;
+    }
+
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+    @media(max-width:700px){
+      nav{padding:20px 24px;}
+      .burger{display:flex;}
+      .nav-links{
+        position:fixed;
+        top:0;left:0;right:0;
+        height:100vh;
+        background:rgba(15,15,15,0.96);
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        gap:32px;
+        transform:translateY(-100%);
+        transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
+        pointer-events:none;
       }
-      .nav-links.open { transform: translateY(0); pointer-events: all; }
-      .nav-links a {
-        font-size: 22px !important;
-        font-weight: 600 !important;
-        color: var(--text-dark) !important;
+      .nav-links.open{
+        transform:translateY(0);
+        pointer-events:all;
       }
-      .nav-links a:hover { color: var(--green-dark) !important; }
+      .nav-links a{
+        font-size:22px!important;
+        font-weight:600!important;
+        color:#fff!important;
+      }
     }
 
     /* ===== HERO ===== */
-    .hero {
-      height: 100vh;
-      display: flex;
-      overflow: hidden;
+    .hero{
+      position:relative;
+      width:100%;
+      height:100vh;
+      min-height:600px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      overflow:hidden;
+      background:#111;
     }
-    .hero-text {
-      width: 50vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 120px 64px 80px 64px;
-      background: var(--beige);
+
+    .hero-image{
+      position:relative;
+      width:100%;
+      height:100%;
+      overflow:hidden;
     }
-    .hero-text h1 {
-      font-size: clamp(28px, 3.5vw, 56px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--text-dark);
-      margin-bottom: 22px;
+
+    .hero-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
-    .hero-text p {
-      font-size: clamp(14px, 1.2vw, 16px);
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--text-mid);
-      margin-bottom: 36px;
-      max-width: 420px;
+
+    /* Editorial text overlay */
+    .hero-text{
+      position:absolute;
+      bottom:0;
+      left:0;
+      z-index:2;
+      width:100%;
+      padding:80px 24px 22px;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      pointer-events:none;
     }
-    .btn-primary {
-      display: inline-block;
-      background: var(--black);
-      color: var(--white);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 14px 32px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      width: fit-content;
+
+    .hero-text h1{
+      font-size:32px;
+      font-weight:600;
+      line-height:1em;
+      letter-spacing:-0.025em;
+      text-transform:uppercase;
+      color:white;
+      mix-blend-mode:difference;
+      margin:0 0 14px;
+      max-width:650px;
     }
-    .btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); }
-    .hero-image {
-      width: 50vw;
-      flex-shrink: 0;
+
+    .hero-text p{
+      font-size:18px;
+      font-weight:400;
+      line-height:1.6;
+      color:white;
+      mix-blend-mode:difference;
+      margin:0;
+      max-width:480px;
     }
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    @media (max-width: 768px) {
-      .hero { height: 100vh; flex-direction: column-reverse; }
-      .hero-image { width: 100%; height: 50vh; }
-      .hero-text {
-        width: 100%;
-        height: 50vh;
-        padding: 36px 24px 28px;
-        justify-content: center;
+
+    /* Mobile */
+    @media(max-width:768px){
+      .hero{
+        display:block;
+        height:100svh;
+        min-height:600px;
       }
-      .hero-text p { max-width: 100%; margin-bottom: 24px; }
+
+      .hero-image{
+        display:none;
+      }
+
+      .hero-image:first-of-type{
+        display:block;
+        position:absolute;
+        inset:0;
+      }
+
+      .hero-text{
+        bottom:0;
+        left:0;
+        padding:40px 24px 48px;
+      }
+
+      .hero-text h1{
+        font-size:28px;
+      }
+
+      .hero-text p{
+        font-size:17px;
+        max-width:100%;
+      }
     }
 
     /* ===== ABOUT ===== */
-    .about {
-      background: var(--bg);
-      padding: 100px 24px;
-      text-align: center;
-    }
-    .about h2 {
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-      color: var(--text-dark);
-    }
-    .about p {
-      font-size: clamp(15px, 1.4vw, 17px);
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--text-mid);
-      max-width: 680px;
-      margin: 0 auto;
+    .about{
+      width:100%;
+      height:100dvh;
+      min-height:650px;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:60px 24px;
+      text-align:center;
+      overflow:hidden;
     }
 
+    .about-content{
+      width:100%;
+      max-width:760px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    .about h2{
+      font-size:30px;
+      font-weight:400;
+      letter-spacing:-0.03em;
+      margin:0 0 18px;
+      text-transform:uppercase;
+      color:var(--text-dark);
+      opacity:0;
+      transform:translateY(20px);
+      transition:opacity 0.8s ease,transform 0.8s ease;
+    }
+
+    .about p{
+      font-size:17px;
+      font-weight:300;
+      line-height:1.0;
+      color:var(--text-mid);
+      max-width:620px;
+      margin:0 auto 36px;
+      opacity:0;
+      transform:translateY(20px);
+      transition:opacity 0.8s ease 0.25s,transform 0.8s ease 0.25s;
+    }
+
+    /* Portrait images */
+    .about-images{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      width:100%;
+      max-width:440px;
+      margin-bottom:36px;
+    }
+
+    .about-image{
+      width:50%;
+      aspect-ratio:3/4;
+      overflow:hidden;
+      position:relative;
+      clip-path:inset(0 0 100% 0);
+      transition:clip-path 1s cubic-bezier(0.77,0,0.175,1);
+    }
+
+    .about-image:nth-child(2){
+      transition-delay:0.2s;
+    }
+
+    .about-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* Visible state */
+    .about.visible h2,
+    .about.visible p{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .about.visible .about-image{
+      clip-path:inset(0 0 0 0);
+    }
+
+    /* Mobile */
+    @media(max-width:768px){
+      .about{
+        padding:40px 24px;
+        min-height:600px;
+      }
+
+      .about-content{
+        max-width:100%;
+      }
+
+      .about p{
+        margin-bottom:28px;
+      }
+
+      .about-images{
+        gap:10px;
+        max-width:360px;
+      }
+
+      .about-image{
+        aspect-ratio:3/4;
+      }
+    }
+
+    /* Accessibility */
+    @media(prefers-reduced-motion:reduce){
+      .about h2,
+      .about p,
+      .about-image{
+        transition:none;
+      }
+
+      .service-card img{
+        clip-path:inset(0 0 0 0);
+        transition:none;
+      }
+    }
+
+    
     /* ===== PACKAGES ===== */
-    .services-section {
-      background: var(--white);
-      padding: 80px 24px;
+    .services-section{
+      background:var(--white);
+      padding:80px 24px;
     }
-    .services-section h2 {
-      font-size: clamp(24px, 3.5vw, 38px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 48px;
-      color: var(--text-dark);
-      text-align: center;
+
+    .services-inner{
+      max-width:1080px;
+      margin:0 auto;
     }
-    .services-inner {
-      max-width: 1100px;
-      margin: 0 auto;
+
+    .services-section h2{
+      font-size:24px;
+      font-weight:400;
+      letter-spacing:-0.02em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      color:var(--text-dark);
+      text-align:left;
     }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+
+    .services-description{
+      font-size:16px;
+      line-height:1.6;
+      color:var(--text-mid);
+      max-width:620px;
+      margin:0 0 32px;
     }
-    .service-card {
-      background: var(--white);
-      border-radius: 14px;
-      overflow: hidden;
-      text-align: center;
+
+    .services-grid{
+      display:flex;
+      gap:8px;
+      width:100%;
     }
-    .service-card img {
-      width: 100%;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-      display: block;
+
+    .service-card{
+      flex:1;
+      min-width:0;
+      background:var(--white);
+      overflow:hidden;
     }
-    .service-card .service-body {
-      padding: 18px 16px 22px;
+
+    .service-card img{
+      width:100%;
+      height:50dvh;
+      object-fit:cover;
+      display:block;
+      border-radius:0;
+      clip-path:inset(0 0 100% 0);
+      transition:clip-path 1s cubic-bezier(0.77,0,0.175,1);
     }
-    .service-card .service-name {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 6px;
+
+    .service-card:nth-child(2) img{
+      transition-delay:0.2s;
     }
-    .service-card .service-price {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--green-dark);
+
+    .service-card:nth-child(3) img{
+      transition-delay:0.4s;
     }
-    @media (max-width: 768px) {
-      .services-grid { grid-template-columns: 1fr; gap: 16px; }
+
+    .service-card:nth-child(4) img{
+      transition-delay:0.6s;
+    }
+
+    .services-section.visible .service-card img{
+      clip-path:inset(0 0 0 0);
+    }
+
+    .service-card .service-body{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:4px;
+      padding:16px 0;
+    }
+
+    .service-card .service-name,
+    .service-card .service-price{
+      font-size:14px;
+      font-weight:500;
+      color:var(--text-dark);
+      margin:0;
+    }
+
+    .service-card .service-price{
+      text-align:left;
+      white-space:nowrap;
+    }
+
+    /* Mobile */
+    @media(max-width:768px){
+      .services-section{
+        padding:60px 16px;
+      }
+
+      .services-section h2{
+        font-size:30px;
+      }
+
+      .services-description{
+        margin-bottom:24px;
+      }
+
+      .services-grid{
+        overflow-x:auto;
+        gap:8px;
+        scrollbar-width:none;
+        -webkit-overflow-scrolling:touch;
+      }
+
+      .services-grid::-webkit-scrollbar{
+        display:none;
+      }
+
+      .service-card{
+        flex:0 0 78vw;
+      }
+
+      .service-card img{
+        height:60dvh;
+      }
+
+      .service-card .service-name,
+      .service-card .service-price{
+        font-size:18px;
+      }
     }
 
     /* ===== PROMO SECTION ===== */
@@ -678,83 +868,123 @@
 </head>
 <body>
 
-  <!-- NEWS BANNER -->
-  <div class="news-banner">
-    <span data-edit="banner_text">Now booking for wedding season 2026 — limited dates available.</span>
-    <a href="#contact" data-edit="banner_link" data-edit-role="href">Get in touch →</a>
-  </div>
-
   <!-- NAVBAR -->
   <nav id="navbar">
     <a href="#hero" class="logo" data-edit="site_name">Aperture &amp; Co.</a>
-    <button class="burger" id="burger" aria-label="Toggle menu">
+
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
+
     <div class="nav-links" id="navLinks">
-      <a href="#about"    data-edit="nav_about">About</a>
+      <a href="#about" data-edit="nav_about">About</a>
       <a href="#services" data-edit="nav_services">Packages</a>
-      <a href="#gallery"  data-edit="nav_gallery">Portfolio</a>
-      <a href="#hours"    data-edit="nav_hours">Hours</a>
-      <a href="#policy"   data-edit="nav_policy">Policy</a>
-      <a href="#contact"  data-edit="nav_contact">Contact</a>
+      <a href="#gallery" data-edit="nav_gallery">Gallery</a>
+      <a href="#policy" data-edit="nav_policy">Policy</a>
+      <a href="#contact" data-edit="nav_contact">Contact</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <section id="hero" class="hero">
-    <div class="hero-text">
-      <h1 data-edit="hero_title">Moments Captured, Stories Told</h1>
-      <p data-edit="hero_description">Documentary-style photography for weddings, portraits, and events. Every frame is crafted with intention and heart.</p>
-      <a href="#gallery" class="btn-primary" data-edit="hero_cta_link" data-edit-role="href">
-        <span data-edit="hero_cta">View Portfolio</span>
-      </a>
-    </div>
+
     <div class="hero-image">
-      <img data-edit="hero_image" src="https://images.pexels.com/photos/2850286/pexels-photo-2850286.jpeg" alt="Hero" />
+      <img
+        data-edit="hero_image"
+        src="https://images.pexels.com/photos/27928733/pexels-photo-27928733.jpeg"
+        alt="Photography portfolio"
+      />
     </div>
+
+    <div class="hero-image">
+      <img
+        data-edit="hero_image_secondary"
+        src="https://suwiamrsjmbvhceqxchp.supabase.co/storage/v1/object/sign/templates/Template%20assets/previews/Horses%20Near%20Yurt.png?token=eyJraWQiOiJkZDFkZjVkOS04MmMzLTRlOTItOTk3Mi0xMDUwOTcxZGQ4MWYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ0ZW1wbGF0ZXMvVGVtcGxhdGUgYXNzZXRzL3ByZXZpZXdzL0hvcnNlcyBOZWFyIFl1cnQucG5nIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5NTQzOTc5MSwiZXhwIjoxODI2OTc1NzkxfQ.4UM5MPyv1xdwmw9xa57nASHwWVv-aVwxfQdkrIxAh8g"
+        alt="Editorial photography"
+      />
+    </div>
+
+    <div class="hero-text">
+      <h1 data-edit="hero_title">Aperture Art<br>photography</h1>
+      <p data-edit="hero_description">
+        Charting the Untamed Soul of the Earth
+      </p>
+    </div>
+
   </section>
 
+  
   <!-- ABOUT -->
   <section id="about" class="about">
-    <h2 data-edit="about_title">About Me</h2>
-    <p data-edit="about_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <div class="about-content">
+      <h2 data-edit="about_title">A Little About Me</h2>
+
+      <p data-edit="about_description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+
+      <div class="about-images">
+        <div class="about-image reveal-image">
+          <img
+            data-edit="about_image_1"
+            src="https://images.pexels.com/photos/9374381/pexels-photo-9374381.jpeg"
+            alt="Portrait photograph"
+          />
+        </div>
+
+        <div class="about-image reveal-image">
+          <img
+            data-edit="about_image_2"
+            src="https://images.pexels.com/photos/39890222/pexels-photo-39890222.jpeg"
+            alt="Portrait photograph"
+          />
+        </div>
+      </div>
+
+      <p data-edit="about_description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
   </section>
 
+  
   <!-- PACKAGES -->
   <section id="services" class="services-section">
     <div class="services-inner">
       <h2 data-edit="services_title">Photography Packages</h2>
+      <p class="services-description" data-edit="services_description">Explore photography packages designed to capture every meaningful moment, from intimate portraits to full-day celebrations.</p>
+
       <div class="services-grid" data-repeat="services">
 
         <div class="service-card">
-          <img data-edit="image" src="https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg" alt="Package" />
+          <img data-edit="image" src="https://images.pexels.com/photos/12178594/pexels-photo-12178594.jpeg" alt="Wedding Full Day" />
           <div class="service-body">
             <div class="service-name" data-edit="name">Wedding Full Day</div>
-            <div class="service-price" data-edit="price">From $2,800</div>
+            <div class="service-price" data-edit="price">From R22,800</div>
           </div>
         </div>
 
         <div class="service-card">
-          <img data-edit="image" src="https://images.pexels.com/photos/8349344/pexels-photo-8349344.jpeg" alt="Package" />
+          <img data-edit="image" src="https://images.pexels.com/photos/8283964/pexels-photo-8283964.jpeg" alt="Engagement Session" />
           <div class="service-body">
-            <div class="service-name" data-edit="name">Engagement Session</div>
-            <div class="service-price" data-edit="price">$650</div>
+            <div class="service-name" data-edit="name">Graduation Shoot</div>
+            <div class="service-price" data-edit="price">From R1,650</div>
           </div>
         </div>
 
         <div class="service-card">
-          <img data-edit="image" src="https://images.pexels.com/photos/764529/pexels-photo-764529.jpeg" alt="Package" />
+          <img data-edit="image" src="https://images.pexels.com/photos/30320103/pexels-photo-30320103.jpeg" alt="Portrait Session" />
           <div class="service-body">
             <div class="service-name" data-edit="name">Portrait Session</div>
-            <div class="service-price" data-edit="price">$380</div>
+            <div class="service-price" data-edit="price">From R380</div>
           </div>
         </div>
 
         <div class="service-card">
-          <img data-edit="image" src="https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg" alt="Package" />
+          <img data-edit="image" src="https://images.pexels.com/photos/27570910/pexels-photo-27570910.jpeg" alt="Event Coverage" />
           <div class="service-body">
             <div class="service-name" data-edit="name">Event Coverage</div>
-            <div class="service-price" data-edit="price">From $900</div>
+            <div class="service-price" data-edit="price">From R9,500</div>
           </div>
         </div>
 
@@ -979,6 +1209,33 @@
       navbar.classList.toggle('scrolled', window.scrollY > 60);
     });
 
+    
+    const aboutSection=document.querySelector('.about');
+
+    const aboutObserver=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          aboutSection.classList.add('visible');
+          aboutObserver.unobserve(aboutSection);
+        }
+      });
+    },{threshold:0.65});
+
+    aboutObserver.observe(aboutSection);
+
+    const servicesSection=document.querySelector('.services-section');
+
+    const servicesObserver=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          servicesSection.classList.add('visible');
+          servicesObserver.unobserve(servicesSection);
+        }
+      });
+    },{threshold:0.15});
+
+    servicesObserver.observe(servicesSection);
+
     // Burger menu
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
@@ -1022,5 +1279,118 @@
       if (num) num.textContent = String(i + 1).padStart(2, '0');
     });
   </script>
+  <script>
+    (async () => {
+      const SITE_ID = "{{SQUARRE_SITE_ID}}";
+      if (!SITE_ID || SITE_ID === "{{SQUARRE_SITE_ID}}") return;
+
+      // ── Device ────────────────────────────────────────────────────
+      const ua = navigator.userAgent;
+      const device =
+        /Mobi|Android/i.test(ua) && !/Tablet|iPad/i.test(ua) ? "mobile"
+        : /Tablet|iPad/i.test(ua) || (/Android/i.test(ua) && !/Mobile/i.test(ua)) ? "tablet"
+        : /Win|Mac|Linux|CrOS/i.test(navigator.platform) ? "desktop"
+        : "unknown";
+
+      // ── Visitor hash ──────────────────────────────────────────────
+      let hash = localStorage.getItem("visitor_hash");
+      if (!hash) {
+        hash = crypto.randomUUID();
+        localStorage.setItem("visitor_hash", hash);
+      }
+
+      // ── Location ──────────────────────────────────────────────────
+      let city = null, province = null, country = null;
+      try {
+        const geoRes = await fetch("https://ipapi.co/json/");
+        if (geoRes.ok) {
+          const geo = await geoRes.json();
+          city     = geo.city          ?? null;
+          province = geo.region        ?? null;
+          country  = geo.country_name  ?? null;
+        }
+      } catch {}
+
+      // ── Record visit — capture row id for later updates ───────────
+      let visitId = null;
+      const startTime = Date.now();
+
+      try {
+        const res = await fetch(
+          "https://suwiamrsjmbvhceqxchp.supabase.co/rest/v1/site_visits",
+          {
+            method: "POST",
+            headers: {
+              apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1d2lhbXJzam1idmhjZXF4Y2hwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ5NDM4MDEsImV4cCI6MjA4MDUxOTgwMX0.4V8Ec8pvDYZyM0WYO3ePMa7yrHTuvbVdoCK9eYhH6zk",
+              Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1d2lhbXJzam1idmhjZXF4Y2hwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ5NDM4MDEsImV4cCI6MjA4MDUxOTgwMX0.4V8Ec8pvDYZyM0WYO3ePMa7yrHTuvbVdoCK9eYhH6zk",
+              "Content-Type": "application/json",
+              Prefer: "return=representation,resolution=ignore-duplicates",
+            },
+            body: JSON.stringify({
+              site_id: SITE_ID,
+              visitor_hash: hash,
+              device,
+              city,
+              province,
+              country,
+            }),
+          }
+        );
+
+        if (res.ok) {
+          const rows = await res.json();
+          if (rows?.length > 0) visitId = rows[0].id;
+        }
+      } catch {}
+
+      // ── Engagement tracking ───────────────────────────────────────
+      let engaged = false;
+
+      const markEngaged = () => {
+        if (engaged || !visitId) return;
+        engaged = true;
+
+        navigator.sendBeacon(
+          `https://suwiamrsjmbvhceqxchp.supabase.co/rest/v1/site_visits?id=eq.${visitId}`,
+          new Blob(
+            [JSON.stringify({ engaged: true })],
+            { type: "application/json" }
+          )
+        );
+      };
+
+      window.addEventListener("scroll", () => {
+        const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        if (pct > 0.3) markEngaged();
+      }, { passive: true });
+
+      document.addEventListener("click", markEngaged, { once: true });
+
+      // ── Duration tracking ─────────────────────────────────────────
+      let durationSent = false;
+
+      const sendDuration = () => {
+        if (durationSent || !visitId) return;
+        durationSent = true;
+
+        const duration = Math.round((Date.now() - startTime) / 1000);
+        if (duration < 1) return;
+
+        navigator.sendBeacon(
+          `https://suwiamrsjmbvhceqxchp.supabase.co/rest/v1/site_visits?id=eq.${visitId}`,
+          new Blob(
+            [JSON.stringify({ duration_seconds: duration })],
+            { type: "application/json" }
+          )
+        );
+      };
+
+      window.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "hidden") sendDuration();
+      });
+      window.addEventListener("pagehide", sendDuration);
+
+    })();
+    </script>
 </body>
 </html>
